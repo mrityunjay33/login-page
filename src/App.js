@@ -5,15 +5,18 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [auth, setAuth] = useState(false);
+  const [errorMeassage, setErrorMeassage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(username === 'user' && password === 'password') setAuth(true);
+    else setErrorMeassage('Invalid username or password');
   }
 
   return (
     <div className='container'>
       <h1>Login Page</h1>
+      <div style={{color:'red'}}>{errorMeassage}</div>
       {!auth ? 
       <div>
         <form onSubmit={handleSubmit}>
